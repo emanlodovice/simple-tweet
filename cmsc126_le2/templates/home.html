@@ -2,19 +2,26 @@
 
 {% block content %}
     {% if request.user.is_authenticated %}
-        <form action="{% url 'add_tweet' %}?next={{ request.path }}" method="POST">
-            {% csrf_token %}
-            <textarea name="content" id="" cols="30" rows="3"></textarea>
-            <button>Tweet</button>
-        </form>
+    <form action="{% url 'add_tweet' %}?next={{ request.path }}" method="POST" class="col-md-6 col-md-offset-3">
+        {% csrf_token %}
+        <textarea name="content" id="" cols="30" rows="3" class="form-control" placeholder="tweet"></textarea>
+        <button class="btn btn-primary tweet-btn">Tweet</button>
+    </form>
     {% endif %}
 
-    <ul>
+    
+    <div class="col-md-6 col-md-offset-3">
         {% for tweet in tweets %}
-            <li>
-                <p>{{ tweet.content }} by <a href="{% url 'profile' tweet.owner.username %}">{{ tweet.owner.get_full_name }}</a></p>
-                <p>{{ tweet.when_created|date:'D M d, Y f A' }}</p>
-            </li>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <img src="{{ tweet.owner.profile.avatar_url }}" width="30px">
+                    <a href="{% url 'profile' tweet.owner.username %}">{{ tweet.owner.get_full_name }}</a>
+                    <span class="text-muted">{{ tweet.when_created|date:'D M d, Y f A' }}</span>
+                </div>
+                <div class="panel-body">
+                    <pre>{{ tweet.content }}</pre>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

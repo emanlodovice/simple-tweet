@@ -1,4 +1,8 @@
-body {
-    background: url('../img/background.jpg');
-    background-size: 100%;
+nav img {
+    width: 30px;
+    max-height: 50px;
+}
+
+.tweet-btn {
+    margin-top: 10px !important;
 }
