@@ -10,5 +10,5 @@ class Tweet(models.Model):
     content = models.CharField(max_length=255)
     when_created = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{} by {}'.format(self.content, self.owner.username)

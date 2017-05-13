@@ -21,5 +21,5 @@ class UserProfile(models.Model):
             return self.avatar.url
         return static('img/default_avatar.png')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.owner.username
