@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
 
-from forms import UserInfoForm
+from registration.forms import UserInfoForm
 
 
 def sign_in(request):
@@ -19,7 +19,6 @@ def sign_in(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            print user.get_full_name()
             if user.get_full_name() == '':
                 return redirect(reverse('edit_profile'))
             return redirect('/')

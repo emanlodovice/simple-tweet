@@ -8,7 +8,6 @@ class UserInfoForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super(UserInfoForm, self).save(commit=commit)
-        print self.cleaned_data
         if self.cleaned_data['avatar']:
             instance.profile.avatar = self.cleaned_data['avatar']
             instance.profile.save()

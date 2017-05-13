@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from views import home, profile
+from cmsc126_le2.views import home, profile
 
 urlpatterns = [
     url(r'^$', home, name='home'),

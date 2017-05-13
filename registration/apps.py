@@ -9,4 +9,4 @@ class RegistrationConfig(AppConfig):
 
     def ready(self):
         """ activate signals """
-        import signals
+        from registration import signals
