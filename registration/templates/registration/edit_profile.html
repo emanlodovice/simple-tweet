@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.errors }}
+        <label for="first_name">First Name</label>
+        {{ form.first_name }}
+        <br>
+        <label for="first_name">Last Name</label>
+        {{ form.last_name }}
+        <br>
+        <img id="preview" alt="" src="{{ request.user.profile.avatar_url }}">
+        <br>
+        {{ form.avatar }}
+        <br>
+        <button>Save</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/edit_profile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <img src="{{ user.profile.avatar_url }}" alt="{{ user.get_full_name }} avatar" width="200px">
+    <h1>{{ user.get_full_name }}</h1>
+    <ul>
+        {% for tweet in tweets %}
+            <li>
+                <p>{{ tweet.content }} by {{ tweet.owner.get_full_name }}</p>
+                <p>{{ tweet.when_created|date:'D M d, Y f A' }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
